@@ -1,0 +1,465 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #4a6741 0%, #2d4a26 50%, #1e3319 100%);
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(139, 172, 105, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(122, 155, 109, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Carousel Styles */
+.embla {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.embla__container {
+    display: flex;
+    height: 100%;
+}
+
+.embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
+.slide-content {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(252, 254, 251, 0.96));
+    padding: 50px;
+    border-radius: 24px;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.3),
+        0 10px 30px rgba(45, 74, 38, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        0 0 0 1px rgba(122, 155, 109, 0.15);
+    max-width: 1040px;
+    width: 100%;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 2px solid rgba(122, 155, 109, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #7a9b6d 0%, #8fb07f 50%, #7a9b6d 100%);
+    opacity: 0.6;
+}
+
+.slide-content h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #3a5233;
+    margin-bottom: 12px;
+    text-align: left;
+    width: 100%;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(58, 82, 51, 0.1);
+    line-height: 1.2;
+}
+
+.slide-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a6741;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    text-align: left;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-left: 4px solid #8fb07f;
+    padding-left: 16px;
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    color: #2d3e2a;
+    line-height: 1.8;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.slide-content ul {
+    list-style: none;
+    width: 100%;
+    margin-top: 12px;
+    padding-left: 0;
+}
+
+.slide-content ul li {
+    font-size: 1.05rem;
+    color: #3a5233;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 32px;
+    position: relative;
+    font-weight: 400;
+}
+
+.slide-content ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 8px;
+    color: #7a9b6d;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Timeline Navigation */
+.timeline-nav {
+    padding: 50px 40px;
+    background: linear-gradient(to bottom, rgba(45, 74, 38, 0.35), rgba(30, 51, 25, 0.4));
+    backdrop-filter: blur(15px);
+    border-top: 3px solid rgba(122, 155, 109, 0.4);
+    box-shadow: 
+        inset 0 1px 0 rgba(143, 176, 127, 0.15),
+        0 -10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.timeline-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 220, 180, 0.4) 50%, transparent);
+}
+
+.embla__dots {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Timeline Line */
+.timeline-line {
+    position: absolute;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        rgba(130, 157, 105, 0.3) 0%,
+        rgba(122, 155, 109, 0.5) 50%,
+        rgba(130, 157, 105, 0.3) 100%);
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-line-progress {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        #6d8c61 0%, 
+        #7a9b6d 25%,
+        #8fb07f 75%,
+        #a0c090 100%);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 0 15px rgba(122, 155, 109, 0.6),
+        0 0 30px rgba(143, 176, 127, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    position: relative;
+}
+
+.timeline-line-progress::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, #a0c090 0%, #8fb07f 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px rgba(160, 192, 144, 0.8),
+        0 0 20px rgba(143, 176, 127, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Dot Styles */
+.embla__dot {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.embla__dot:hover {
+    transform: scale(1.1);
+}
+
+.dot-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dot-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(122, 155, 109, 0.4), rgba(143, 176, 127, 0.6));
+    border: 3px solid rgba(143, 176, 127, 0.7);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.embla__dot--selected .dot-circle {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #6d8c61 0%, #8fb07f 50%, #a0c090 100%);
+    box-shadow: 
+        0 0 20px rgba(122, 155, 109, 0.7),
+        0 0 40px rgba(143, 176, 127, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    border-color: #a0c090;
+    border-width: 4px;
+}
+
+/* Character Image */
+.dot-character {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+}
+
+.dot-character img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(45, 74, 38, 0.4));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.embla__dot--selected .dot-character {
+    opacity: 1;
+    bottom: 55px;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.embla__dot--selected .dot-character::before {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 8px;
+    background: radial-gradient(ellipse, rgba(122, 155, 109, 0.3), transparent);
+    border-radius: 50%;
+    animation: shadowPulse 3s ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.5;
+    }
+}
+
+.dot-label {
+    margin-top: 14px;
+    font-size: 0.85rem;
+    color: rgba(200, 220, 180, 0.75);
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.embla__dot--selected .dot-label {
+    color: #d4e8c0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-shadow: 
+        0 0 12px rgba(143, 176, 127, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.05em;
+}
+
+/* Pulse Animation */
+.embla__dot--selected .dot-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(160, 192, 144, 0.6), rgba(143, 176, 127, 0.3));
+    animation: militaryPulse 2.5s ease-out infinite;
+}
+
+.embla__dot--selected .dot-circle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(160, 192, 144, 0.5);
+    animation: militaryRing 2.5s ease-out infinite;
+    animation-delay: 0.3s;
+}
+
+@keyframes militaryPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
+@keyframes militaryRing {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slide-content {
+        padding: 40px 30px;
+        border-radius: 20px;
+    }
+
+    .slide-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .slide-content h3 {
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    .slide-content p {
+        font-size: 0.95rem;
+    }
+
+    .slide-content ul li {
+        font-size: 0.9rem;
+        padding-left: 28px;
+    }
+
+    .timeline-nav {
+        padding: 30px 40px;
+    }
+
+    .embla__dot {
+        margin: 0 15px;
+    }
+
+    .dot-label {
+        font-size: 0.8rem;
+    }
+
+    .timeline-line {
+        width: 100%;
+    }
+
+    .dot-character {
+        width: 50px;
+        height: 50px;
+        bottom: 40px;
+    }
+
+    .embla__dot--selected .dot-character {
+        bottom: 45px;
+    }
+}
