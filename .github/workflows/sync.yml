@@ -1,0 +1,19 @@
+name: Sync to Organization Repo
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
+      - name: Push to organization repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git remote add org https://x-access-token:${{ secrets.ASABRI }}@github.com/vaject/programharitua.git
+          git push org main --force
